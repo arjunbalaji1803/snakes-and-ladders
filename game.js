@@ -33,8 +33,8 @@ function coords(n){
 }
 function setPosition(n){
  const p=coords(n);
- token.style.left=((p.col+.5)*12.5)+"%";
- token.style.top=((p.row+.5)*19.2)+"%";
+ token.style.left=((p.col+.25)*12.5)+"%";
+ token.style.top=((p.row+.75)*20)+"%";
  token.setAttribute("aria-label","Player token on square "+n);
  positionText.textContent=String(n);
  position=n;

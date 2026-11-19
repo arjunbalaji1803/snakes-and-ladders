@@ -1,25 +1,13 @@
-# Snakes & Ladders — History Quest
+# Snakes & Ladders
 
-This is the complete static website project. It uses the supplied board image exactly as provided, with a separate movable token and touchscreen controls.
+A touch-friendly static web game for a large touchscreen. It uses the supplied board image as its visual reference, with a separate movable player token. The top row is numbered 33 to 40 from left to right.
 
-## Host it
+## Publish with GitHub Pages
 
-Upload these four files together to the root of a static site, such as a GitHub Pages repository:
+Upload `index.html`, `styles.css`, `game.js`, and `reference-board.png` to the repository root, along with `.github/workflows/deploy.yml`. Set the repository's Pages source to **GitHub Actions**. Every push to `main` will deploy the site; wait for the Pages workflow to show a green check before opening the URL.
 
-- index.html
-- styles.css
-- game.js
-- reference-board.png
+For this repository, the site URL is https://arjunbalaji1803.github.io/snakes-and-ladders/.
 
-Do not rename or separate them. The page loads the script, stylesheet, and board image by their filenames.
+## Board and subjects
 
-For GitHub Pages:
-1. Create a repository. On GitHub Free, the repository must be public for Pages.
-2. Upload all four files to the repository root.
-3. Open **Settings → Pages**.
-4. Set the source to **Deploy from a branch**, choose main and root, then save.
-5. After deployment finishes, copy the site URL shown on the Pages settings screen.
-
-The game is a static site; it needs no build step or server. This project has not been published, so it does not yet have a live URL.
-
-The tile subjects are fixed: red is History, blue is Geography, green is Political Science, and yellow is Economics. On landing, the card says only “It is a [subject] question.” The board snakes and ladder positions match the supplied reference.
+The board preserves the pictured snakes and ladders while matching their destinations: ladders go 5→22, 16→31, and 27→38; snakes go 35→12, 23→8, and 14→2. Landing naturally on 22 leaves the token there. Tile subjects are fixed: red is History, blue is Geography, green is Political Science, and yellow is Economics. A landing card says only “It is a [subject] question.”

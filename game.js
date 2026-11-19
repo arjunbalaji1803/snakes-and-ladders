@@ -6,7 +6,7 @@ const BOARD_COLORS=[
   "blue","yellow","green","blue","yellow","red","blue","green",
   "red","yellow","blue","green","yellow","blue","red","green",
   "blue","yellow","green","red","blue","yellow","green","blue",
-  "green","red","blue","yellow","green","red","blue","yellow"
+  "yellow","blue","red","green","yellow","blue","red","green"
 ];
 const SUBJECTS={
   red:{name:"history",article:"a"},
@@ -14,8 +14,8 @@ const SUBJECTS={
   green:{name:"political science",article:"a"},
   yellow:{name:"economics",article:"an"}
 };
-const LADDERS=[{from:5,to:12},{from:16,to:31},{from:27,to:35}];
-const SNAKES=[{from:38,to:12},{from:23,to:8},{from:14,to:2}];
+const LADDERS=[{from:5,to:22},{from:16,to:31},{from:27,to:38}];
+const SNAKES=[{from:35,to:12},{from:23,to:8},{from:14,to:2}];
 const $=id=>document.getElementById(id);
 const token=$("token"),positionText=$("position"),turnText=$("turn");
 const rollButton=$("roll"),resetButton=$("reset"),fullscreenButton=$("fullscreen");
@@ -29,7 +29,7 @@ function coords(n){
  if(n<=16)return{col:16-n,row:3};
  if(n<=24)return{col:n-17,row:2};
  if(n<=32)return{col:32-n,row:1};
- return{col:40-n,row:0};
+ return{col:n-33,row:0};
 }
 function setPosition(n){
  const p=coords(n);

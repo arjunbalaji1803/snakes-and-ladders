@@ -14,7 +14,7 @@ const SUBJECTS={
   green:{name:"political science",article:"a"},
   yellow:{name:"economics",article:"an"}
 };
-const LADDERS=[{from:5,to:12},{from:17,to:31},{from:27,to:35}];
+const LADDERS=[{from:5,to:12},{from:16,to:31},{from:27,to:35}];
 const SNAKES=[{from:38,to:12},{from:23,to:8},{from:14,to:2}];
 const $=id=>document.getElementById(id);
 const token=$("token"),positionText=$("position"),turnText=$("turn");
@@ -34,7 +34,8 @@ function coords(n){
 function setPosition(n){
  const p=coords(n);
  token.style.left=((p.col+.5)*12.5)+"%";
- token.style.top=((p.row+.5)*20)+"%";
+ // The reference image has a border outside the 5-row tile grid.
+ token.style.top=(.9+(p.row+.5)*19)+"%";
  token.setAttribute("aria-label","Player token on square "+n);
  positionText.textContent=String(n);
  position=n;

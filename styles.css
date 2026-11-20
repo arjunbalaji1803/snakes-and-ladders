@@ -61,6 +61,65 @@ footer{margin-top:auto;padding-top:16px;color:#8798a5;font-size:11px;text-align:
   .num { font-size: clamp(14px, 4vw, 22px); text-shadow: -1px -1px 0 #101820, 0 -1px 0 #101820, 1px -1px 0 #101820, -1px 0 0 #101820, 1px 0 0 #101820, -1px 1px 0 #101820, 0 1px 0 #101820, 1px 1px 0 #101820; }
 }
 
+/* Multi-group turns, tokens, and manual score controls. */
+@media (min-width: 901px) {
+  .layout { grid-template-columns: minmax(0, 1fr) minmax(310px, 340px); }
+  .control-card { padding:16px; }
+  .dice-zone { min-height:140px; margin:12px 0 10px; padding:12px; }
+  .team-panel { padding:14px; }
+  .how-to ul { grid-template-columns:1fr 1fr; gap:7px 10px; }
+  .how-to li { padding-left:15px; font-size:11px; line-height:1.3; }
+}
+.player-chip i { background: var(--team-color, #d7a839); box-shadow: 0 0 0 3px color-mix(in srgb, var(--team-color, #d7a839) 18%, transparent); }
+.team-count-row { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:16px; padding:11px 12px; border:1px solid #e1e8ee; border-radius:12px; background:#f8fafb; }
+.team-count-row label { color:#536b7d; font-size:13px; font-weight:800; }
+.team-count-row select { min-height:42px; min-width:116px; padding:0 12px; border:1px solid #cbd8e2; border-radius:9px; background:#fff; color:#162f46; font:inherit; font-size:14px; font-weight:800; }
+.team-count-hint { margin:6px 3px 0; color:#7b8e9d; font-size:10px; text-align:right; }
+.tokens-layer { position:absolute; z-index:6; inset:0; pointer-events:none; }
+.player-token { position:absolute; z-index:1; display:grid; place-items:center; aspect-ratio:1; padding:1px; border:2px solid #fff; border-radius:12px; background:#fff3; box-shadow:0 2px 5px #081626a8,0 0 0 1.5px #102238; transform:translate(-50%,-50%); transition:left 250ms cubic-bezier(.22,.8,.35,1),top 250ms cubic-bezier(.22,.8,.35,1),filter 180ms,scale 180ms; }
+.player-token svg { display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 0 1px #fff); }
+.player-token.is-active-turn { z-index:2; scale:1.1; filter:drop-shadow(0 0 4px #fff); }
+.player-token.is-moving { filter:drop-shadow(0 2px 5px #172c3c); }
+.player-token.is-climbing { transition-duration:680ms; }
+.player-token.is-sliding { transition-duration:520ms; }
+.team-panel { padding:16px; border:1px solid #dbe4eb; border-radius:19px; background:#fff; box-shadow:0 12px 34px #17304814; }
+.team-panel-heading { display:flex; align-items:end; justify-content:space-between; gap:8px; }
+.team-panel-heading h2 { margin:4px 0 0; color:#17334a; font-size:16px; letter-spacing:-.02em; }
+.team-panel-heading>small { color:#718596; font-size:10px; font-weight:800; white-space:nowrap; }
+.team-list { display:grid; gap:8px; margin-top:12px; }
+.team-row { display:grid; grid-template-columns:minmax(68px,1fr) 34px 48px 34px 40px; align-items:center; gap:3px; min-width:0; padding:6px; border:2px solid transparent; border-radius:13px; background:#f5f8fa; transition:border-color 150ms,background-color 150ms,box-shadow 150ms; }
+.team-row.is-active { border-color:var(--team-color); background:#fff; box-shadow:0 2px 10px color-mix(in srgb, var(--team-color) 18%, transparent); }
+.team-row.is-winner { background:#fff8df; }
+.team-info { display:flex; align-items:center; gap:7px; min-width:0; }
+.team-swatch { flex:none; width:31px; height:34px; display:grid; place-items:center; border:1px solid #fff; border-radius:9px; background:var(--team-color); box-shadow:0 1px 3px #11263b5c,0 0 0 1px #142638; }
+.team-swatch svg { width:27px; height:30px; }
+.team-swatch svg path { fill:var(--team-color); stroke:#142638; stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; }
+.team-name { display:grid; min-width:0; gap:2px; }
+.team-name strong { overflow:hidden; color:#173148; font-size:11px; text-overflow:ellipsis; white-space:nowrap; }
+.team-name small { color:#6f8291; font-size:9px; white-space:nowrap; }
+.team-row .score-button { min-width:0; min-height:42px; padding:0 2px; border:1px solid #d5dfe7; border-radius:9px; background:#fff; color:#20394f; font-size:12px; font-weight:900; touch-action:manipulation; }
+.team-row .score-button:active:not(:disabled) { transform:translateY(1px); background:#edf3f7; }
+.team-row .score-button:disabled { cursor:default; opacity:.42; }
+.score-value { display:flex; align-items:baseline; justify-content:center; gap:2px; min-width:0; color:#122b42; font-size:14px; font-weight:900; white-space:nowrap; }
+.score-value small { color:#758898; font-size:8px; font-weight:800; }
+@media (min-width: 601px) and (max-width: 900px) {
+  .controls { grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:stretch; }
+  .control-card { grid-column:1; grid-row:1; }
+  .team-panel { grid-column:2; grid-row:1 / span 2; }
+  .how-to { grid-column:1; grid-row:2; }
+}
+@media (max-width: 600px) {
+  .controls { grid-template-columns:minmax(0,1fr); }
+  .control-card,.team-panel,.how-to { grid-column:1; }
+  .team-panel { padding:13px; }
+  .team-row { grid-template-columns:minmax(68px,1fr) 34px 48px 34px 40px; gap:3px; padding:5px; }
+  .team-row .score-button { min-height:40px; }
+  .team-swatch { width:28px; height:31px; }
+  .team-swatch svg { width:24px; height:27px; }
+  .team-name strong { font-size:10px; }
+  .team-count-row { margin-top:11px; }
+}
+
 /* Rounded, spotted snakes and the compact ladder proportions from the reference. */
 .ladder-shadow { stroke-width: 14; }
 .ladder-rail { stroke: #9b622d; stroke-width: 8; }
@@ -75,8 +134,7 @@ footer{margin-top:auto;padding-top:16px;color:#8798a5;font-size:11px;text-align:
 .snake-mouth { fill: none; stroke: #13212c; stroke-width: 2.2; stroke-linecap: round; }
 .snake-tongue { fill: none; stroke: #a11f39; stroke-width: 2.5; stroke-linecap: round; }
 
-
-/* Keep the supplied board artwork fully inside its frame. */
+/* Scale the reference board to the frame instead of clipping its natural-size image. */
 .board { aspect-ratio: 64 / 41; }
 .board-art {
   position: absolute;
